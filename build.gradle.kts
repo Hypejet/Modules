@@ -44,10 +44,6 @@ tasks {
     test {
         useJUnitPlatform()
     }
-
-    register("printVersion") {
-        println(project.version)
-    }
 }
 
 publishing {
@@ -80,7 +76,7 @@ publishing {
         }
     }
 
-    /*repositories.maven {
+    repositories.maven {
         name = "mavenCentral"
         url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
 
@@ -88,7 +84,7 @@ publishing {
             username = project.findProperty("mavenCentralUsername") as String?
             password = project.findProperty("mavenCentralPassword") as String?
         }
-    }*/
+    }
 }
 
 signing {
