@@ -10,7 +10,7 @@ plugins {
 val javaVersion = 25
 
 group = "net.hypejet"
-version = "1.0-SNAPSHOT"
+version = System.getenv("GITHUB_REF_NAME") ?: "1.0-SNAPSHOT"
 description = "A Java library making modular programming easier"
 
 repositories {
@@ -44,6 +44,10 @@ tasks {
     test {
         useJUnitPlatform()
     }
+
+    register("printVersion") {
+        println(project.version)
+    }
 }
 
 publishing {
@@ -76,7 +80,7 @@ publishing {
         }
     }
 
-    repositories.maven {
+    /*repositories.maven {
         name = "mavenCentral"
         url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
 
@@ -84,7 +88,7 @@ publishing {
             username = project.findProperty("mavenCentralUsername") as String?
             password = project.findProperty("mavenCentralPassword") as String?
         }
-    }
+    }*/
 }
 
 signing {
