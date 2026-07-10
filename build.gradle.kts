@@ -35,6 +35,12 @@ tasks {
     compileJava {
         options.release = javaVersion
     }
+
+    javadoc {
+        val docletOptions = options as StandardJavadocDocletOptions
+        docletOptions.addBooleanOption("html5", true)
+    }
+
     test {
         useJUnitPlatform()
     }
@@ -74,6 +80,11 @@ publishing {
 }
 
 signing {
+    useInMemoryPgpKeys(
+        project.findProperty("signingKey") as String?,
+        project.findProperty("signingPassword") as String?
+    )
+
     sign(publishing.publications["maven"])
 }
 
