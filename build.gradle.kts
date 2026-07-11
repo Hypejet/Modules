@@ -2,9 +2,8 @@ import java.time.Year
 
 plugins {
     java
-    signing
-    `maven-publish`
     alias(libs.plugins.indraLicenserSpotless)
+    alias(libs.plugins.mavenPublish)
 }
 
 val javaVersion = 25
@@ -46,54 +45,34 @@ tasks {
     }
 }
 
-publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
 
-        pom {
+    pom {
+        url = "https://github.com/Hypejet/Modules"
+
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+
+        developers {
+            developer {
+                id = "Codestech1"
+                name = "Codestech"
+                email = "codestech@hypejet.net"
+            }
+        }
+
+        scm {
+            connection = "scm:git:git://github.com/Hypejet/Modules.git"
+            developerConnection = "scm:git:ssh://github.com:Hypejet/Modules.git"
             url = "https://github.com/Hypejet/Modules"
-
-            licenses {
-                license {
-                    name = "The Apache License, Version 2.0"
-                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            }
-
-            developers {
-                developer {
-                    id = "Codestech1"
-                    name = "Codestech"
-                    email = "codestech@hypejet.net"
-                }
-            }
-
-            scm {
-                connection = "scm:git:git://github.com/Hypejet/Modules.git"
-                developerConnection = "scm:git:ssh://github.com:Hypejet/Modules.git"
-                url = "https://github.com/Hypejet/Modules"
-            }
         }
     }
-
-    repositories.maven {
-        name = "mavenCentral"
-        url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-
-        credentials {
-            username = project.findProperty("mavenCentralUsername") as String?
-            password = project.findProperty("mavenCentralPassword") as String?
-        }
-    }
-}
-
-signing {
-    useInMemoryPgpKeys(
-        project.findProperty("signingKey") as String?,
-        project.findProperty("signingPassword") as String?
-    )
-
-    sign(publishing.publications["maven"])
 }
 
 indraSpotlessLicenser {
