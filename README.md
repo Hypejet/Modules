@@ -9,18 +9,18 @@ This library was made with many use cases in mind, for example:
 
 ## ❓ Why Modules?
 There are some adventages of using this library over others or custom approach:
-- **Lightweight** - weights less than 20kB.
+- **Lightweight** - weighs less than 20kB.
 - **Ease of use** - basic usage is really simple, you can create your first modular environment in minutes!
 - **Fast** - thanks to its simplicity, the module loading mechanism itself is really fast. In practice however, the overall speed depends on how fast your modules load and unload.
 - **Keeps dependencies simple** - requires only plain Java 25 and [SLF4J](https://www.slf4j.org), which is compatible with almost every common logging framework and is widely used nowadays.
-- **Fail-safe** - if any module fails to register or load, no exception is thrown and your application continues to run. The only exception is when circular module loading is found, but it fails early and is easy to detect, you can find out more on the wiki.
+- **Fail-safe** - if any module fails to register or load, no exception is thrown, and your application continues to run. The only exception is when circular module loading is found, but it fails early and is easy to detect, you can find out more on the wiki.
 - **Feature-complete** - Modules was designed not only for Hypejet, it can provide more advanced features where needed.
 
 ## 📽️ Usage
 You can find out how to use Modules on our [wiki](https://github.com/Hypejet/Modules/wiki).
 
 ## 👥 Contributing
-Pull requests are welcome. There are no strict requirements for now, though - if possible - please try to follow our code style. But don't worry, in case there is something wrong, it will most likely get corrected by maintainers.
+Pull requests are welcome. There are no strict requirements for now, however - if possible - please try to follow our code style. But don't worry, in case there is something wrong, it will most likely get corrected by maintainers.
 
 ## 📃 License
-This project was licensed under [Apache 2.0 License](LICENSE).
+This project was licensed under the terms of [Apache 2.0 License](LICENSE).
