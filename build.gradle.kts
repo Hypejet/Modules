@@ -45,6 +45,12 @@ tasks {
     }
 }
 
+publishing {
+    publications.create<MavenPublication>("maven") {
+        from(components["java"])
+    }
+}
+
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
