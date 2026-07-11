@@ -1,1 +1,1 @@
-rootProject.name = "modules"
+rootProject.name = "Modules"

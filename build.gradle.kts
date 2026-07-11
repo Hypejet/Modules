@@ -9,7 +9,7 @@ plugins {
 val javaVersion = 25
 
 group = "net.hypejet"
-version = System.getenv("GITHUB_REF_NAME") ?: "1.0-SNAPSHOT"
+version = releaseTag() ?: "1.0-SNAPSHOT"
 description = "A Java library making modular programming easier"
 
 repositories {
@@ -48,40 +48,56 @@ tasks {
 publishing {
     publications.create<MavenPublication>("maven") {
         from(components["java"])
+
+        pom {
+            artifactId = project.name.lowercase()
+
+            name = project.name
+            description = project.description
+            url = "https://github.com/Hypejet/Modules"
+
+            licenses {
+                license {
+                    name = "The Apache License, Version 2.0"
+                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            }
+
+            developers {
+                developer {
+                    id = "Codestech1"
+                    name = "Codestech"
+                    email = "codestech@hypejet.net"
+                }
+            }
+
+            scm {
+                connection = "scm:git:git://github.com/Hypejet/Modules.git"
+                developerConnection = "scm:git:ssh://github.com:Hypejet/Modules.git"
+                url = "https://github.com/Hypejet/Modules"
+            }
+        }
     }
 }
 
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
-
-    pom {
-        url = "https://github.com/Hypejet/Modules"
-
-        licenses {
-            license {
-                name = "The Apache License, Version 2.0"
-                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        }
-
-        developers {
-            developer {
-                id = "Codestech1"
-                name = "Codestech"
-                email = "codestech@hypejet.net"
-            }
-        }
-
-        scm {
-            connection = "scm:git:git://github.com/Hypejet/Modules.git"
-            developerConnection = "scm:git:ssh://github.com:Hypejet/Modules.git"
-            url = "https://github.com/Hypejet/Modules"
-        }
-    }
 }
 
 indraSpotlessLicenser {
     licenseHeaderFile(rootProject.file("LICENSE_HEADER"))
     property("YEAR", Year.now().value.toString())
+}
+
+private fun releaseTag(): String? {
+    val ref = System.getenv("GITHUB_REF") ?: return null
+    val tagRefPrefix = "refs/tags/"
+
+    if (!ref.startsWith(tagRefPrefix))
+        return null
+
+    val tag = ref.removePrefix(tagRefPrefix)
+    if (tag.isEmpty() || !tag.startsWith("v")) return null
+    return tag.removePrefix("v").ifEmpty { null }
 }
