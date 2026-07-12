@@ -1,13 +1,13 @@
-# 🧩 Modules
-A Java library making modular programming easier. Made for Hypejet Network&trade;, now available to everyone.
+# Modules
+A Java library making modular programming easier. Made for Hypejet Network, now available to everyone.
 
-## 🎬 Use cases
+## Use cases
 This library was made with many use cases in mind, for example:
 - **Modular monolith architecture** - you can use Modules to split features of your project into multiple independant modules. This allows the application to keep running, even if one of those modules fail.
 - **Creating and removing complex environments at any time at runtime** - for example, Hypejet uses this library to create and load minigame rounds, which are then fully unloaded and removed.
 - **And anywhere you need modular environment!** - Modules was designed to be feature-complete and provide advanced features.
 
-## ❓ Why Modules?
+## Why Modules?
 There are some adventages of using this library over others or custom approach:
 - **Lightweight** - weighs less than 20kB.
 - **Ease of use** - basic usage is really simple, you can create your first modular environment in minutes!
@@ -16,11 +16,11 @@ There are some adventages of using this library over others or custom approach:
 - **Fail-safe** - if any module fails to register or load, no exception is thrown, and your application continues to run. The only exception is when circular module loading is found, but it fails early and is easy to detect, you can find out more on the wiki.
 - **Feature-complete** - Modules was designed not only for Hypejet, it can provide more advanced features where needed.
 
-## 📽️ Usage
+## Usage
 You can find out how to use Modules on our [wiki](https://github.com/Hypejet/Modules/wiki).
 
-## 👥 Contributing
+## Contributing
 Pull requests are welcome. There are no strict requirements for now, however - if possible - please try to follow our code style. But don't worry, in case there is something wrong, it will most likely get corrected by maintainers.
 
-## 📃 License
+## License
 This project was licensed under the terms of [Apache 2.0 License](LICENSE).
