@@ -124,16 +124,18 @@ public final class ModuleManager<E> {
             throw new IllegalStateException("The module manager is unloaded");
 
         if (this.isLoaded()) {
-            LOGGER.warn("The module manager is already loaded", new Throwable());
+            LOGGER.error("The module manager is already loaded", new Throwable());
             return;
         }
 
-        this.state = State.LOADED;
+        this.state = State.LOADING;
 
         this.loadOrder.removeIf(entry -> {
             this.createAndLoadModule(entry);
             return true;
         });
+
+        this.state = State.LOADED;
     }
 
     /**
@@ -145,8 +147,11 @@ public final class ModuleManager<E> {
     public void unload() {
         this.ensureLoaded();
 
-        if (this.state == State.UNLOADING) {
-            LOGGER.warn("The module manager is already unloading", new Throwable());
+        if (this.state == State.LOADING) {
+            LOGGER.error("You cannot unload the module manager before it gets fully loaded", new Throwable());
+            return;
+        } else if (this.state == State.UNLOADING) {
+            LOGGER.error("The module manager is already unloading", new Throwable());
             return;
         }
 
@@ -217,7 +222,7 @@ public final class ModuleManager<E> {
     }
 
     private boolean isLoaded() {
-        return this.state == State.LOADED || this.state == State.UNLOADING;
+        return this.state == State.LOADING || this.state == State.LOADED || this.state == State.UNLOADING;
     }
 
     private void ensureLoaded() {
@@ -227,6 +232,7 @@ public final class ModuleManager<E> {
 
     private enum State {
         CREATED,
+        LOADING,
         LOADED,
         UNLOADING,
         UNLOADED
