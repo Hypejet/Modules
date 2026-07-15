@@ -85,6 +85,22 @@ public final class ModuleManager<E> {
     }
 
     /**
+     * Gets a module instance with the specified class. Throws an exception if it is not loaded.
+     *
+     * @param clazz the class of the desired module instance
+     * @return the module instance
+     * @param <M> the type of module instance to return
+     * @throws IllegalStateException if either this module manager or the specified module is not loaded
+     * @since 1.0
+     * @see #getModule(Class)
+     */
+    public <M extends Module<?>> M getModuleOrThrow(Class<M> clazz) {
+        M module = this.getModule(clazz);
+        if (module != null) return module;
+        throw new IllegalStateException("Module with class " + clazz.getSimpleName() + " is not loaded");
+    }
+
+    /**
      * Gets a collection of currently loaded modules.
      *
      * @return the modules that are currently loaded
