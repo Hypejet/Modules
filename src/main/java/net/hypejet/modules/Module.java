@@ -19,6 +19,8 @@ import net.hypejet.modules.annotation.AbstractModule;
 import org.jetbrains.annotations.ApiStatus;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A module to be loaded with {@link ModuleManager}.
@@ -32,6 +34,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class Module<E> {
 
     private @Nullable ModuleManager<? extends E> moduleManager;
+    private @Nullable Logger logger;
 
     /**
      * Gets whether this module is currently loaded.
@@ -70,6 +73,18 @@ public abstract class Module<E> {
      */
     public final E getEnvironment() {
         return this.getModuleManager().getEnvironment();
+    }
+
+    /**
+     * Gets the logger of this module.
+     *
+     * @return the logger
+     * @since 1.0.3
+     */
+    public final Logger getLogger() {
+        if (this.logger == null)
+            this.logger = LoggerFactory.getLogger(this.getClass());
+        return this.logger;
     }
 
     /**
