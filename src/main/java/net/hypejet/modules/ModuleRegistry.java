@@ -33,7 +33,7 @@ import java.util.function.Supplier;
  * A registry of modules to be created and loaded by a {@link ModuleManager}.
  *
  * @param <E> the type of environment that the module manager is going to run on
- * @since 1.0
+ * @since 1.0.0
  * @see ModuleManager
  */
 @NullMarked
@@ -54,7 +54,7 @@ public final class ModuleRegistry<E> {
      * @param supplier the supplier of the module instance
      * @return this module registry
      * @param <M> the type of module that is being registered
-     * @since 1.0
+     * @since 1.0.0
      */
     public <M extends Module<? super E>> ModuleRegistry<E> register(Class<M> clazz, Supplier<M> supplier) {
         if (this.moduleEntries.containsKey(clazz) || this.superclassModules.containsKey(clazz)) {
@@ -115,7 +115,7 @@ public final class ModuleRegistry<E> {
      * @return the created module manager
      * @throws CircularModuleDependenciesException if the module manager could not be created
      *                                             because circular module dependencies were detected
-     * @since 1.0
+     * @since 1.0.0
      */
     public ModuleManager<E> createModuleManager(E environment) {
         ModuleLoadOrder<E> loadOrder = new ModuleLoadOrder<>(this.moduleEntries, this.superclassModules);

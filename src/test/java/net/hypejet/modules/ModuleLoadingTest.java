@@ -26,7 +26,7 @@ import java.util.function.Supplier;
 /**
  * A test of module manager state after loading modules.
  *
- * @since 1.0
+ * @since 1.0.0
  * @see Module
  * @see ModuleManager
  */

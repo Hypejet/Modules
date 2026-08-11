@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 /**
  * A test of getting abstract modules, their superclass modules, and modules extending them.
  *
- * @since 1.0
+ * @since 1.0.0
  * @see AbstractModule
  */
 @NullMarked

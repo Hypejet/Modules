@@ -37,7 +37,7 @@ import java.lang.annotation.RetentionPolicy;
  * required or not can be overridden by subclasses through specifying them again using this annotation.
  * It is even possible to remove a dependency by subclasses, see {@link #removed()} for more information.</p>
  *
- * @since 1.0
+ * @since 1.0.0
  * @see AbstractModule
  */
 @NullMarked
@@ -47,7 +47,7 @@ public @interface ModuleDependencies {
      * The modules that are required by the module annotated with this annotation.
      *
      * @return the classes of required modules
-     * @since 1.0
+     * @since 1.0.0
      */
     Class<? extends Module>[] required() default {};
 
@@ -56,7 +56,7 @@ public @interface ModuleDependencies {
      * with this annotation if they are present, but are not strictly required.
      *
      * @return the classes of optional modules
-     * @since 1.0
+     * @since 1.0.0
      */
     Class<? extends Module>[] optional() default {};
 
@@ -67,7 +67,7 @@ public @interface ModuleDependencies {
      * a dependency, while the annotating class does not.</p>
      *
      * @return the classes of modules that are not dependencies
-     * @since 1.0
+     * @since 1.0.0
      */
     Class<? extends Module>[] removed() default {};
 }

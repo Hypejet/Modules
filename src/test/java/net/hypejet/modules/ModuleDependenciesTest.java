@@ -27,7 +27,7 @@ import java.util.Set;
 /**
  * A test of loading modules that depend on other modules and order of such loading.
  *
- * @since 1.0
+ * @since 1.0.0
  * @see Module
  */
 @NullMarked

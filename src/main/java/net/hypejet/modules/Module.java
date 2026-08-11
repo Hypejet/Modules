@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * A module to be loaded with {@link ModuleManager}.
  *
  * @param <E> the type of environment that this module runs on
- * @since 1.0
+ * @since 1.0.0
  * @see ModuleManager
  */
 @NullMarked
@@ -40,7 +40,7 @@ public abstract class Module<E> {
      * Gets whether this module is currently loaded.
      *
      * @return {@code true} if the module is loaded, {@code false} otherwise
-     * @since 1.0
+     * @since 1.0.0
      */
     public final boolean isLoaded() {
         return this.moduleManager != null;
@@ -53,7 +53,7 @@ public abstract class Module<E> {
      *
      * @return the module manager
      * @throws IllegalStateException if this module is not loaded
-     * @since 1.0
+     * @since 1.0.0
      */
     public final ModuleManager<? extends E> getModuleManager() {
         if (!this.isLoaded())
@@ -68,7 +68,7 @@ public abstract class Module<E> {
      *
      * @return the environment
      * @throws IllegalStateException if this module is not loaded
-     * @since 1.0
+     * @since 1.0.0
      * @see #getModuleManager()
      */
     public final E getEnvironment() {
@@ -90,7 +90,7 @@ public abstract class Module<E> {
     /**
      * Called when this module becomes loaded.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @ApiStatus.OverrideOnly
     protected void load() {}
@@ -98,7 +98,7 @@ public abstract class Module<E> {
     /**
      * Called when this module becomes unloaded.
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @ApiStatus.OverrideOnly
     protected void unload() {}

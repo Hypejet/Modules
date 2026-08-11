@@ -32,7 +32,7 @@ import java.lang.annotation.RetentionPolicy;
  * {@link ModuleManager#getModule(Class)}, as well as {@link ModuleManager#isModuleLoaded(Class)}, though the list
  * may be incomplete.</p>
  *
- * @since 1.0
+ * @since 1.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AbstractModule {}

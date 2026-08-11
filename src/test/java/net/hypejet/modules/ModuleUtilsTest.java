@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * A test of internal utilities used by the library.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 @NullMarked
 public final class ModuleUtilsTest {
