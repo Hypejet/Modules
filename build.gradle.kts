@@ -9,7 +9,7 @@ plugins {
 val javaVersion = 25
 
 group = "net.hypejet"
-version = releaseTag() ?: "1.0.3-SNAPSHOT"
+version = releaseTag() ?: "1.0.4-SNAPSHOT"
 description = "A Java library making modular programming easier"
 
 repositories {
