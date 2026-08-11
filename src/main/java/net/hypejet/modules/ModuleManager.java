@@ -32,7 +32,7 @@ import java.util.SequencedMap;
  * A manager of modules.
  *
  * @param <E> the type of environment that this module manager runs on
- * @since 1.0
+ * @since 1.0.0
  * @see Module
  */
 @NullMarked
@@ -58,7 +58,7 @@ public final class ModuleManager<E> {
      *
      * @return the environment
      * @throws IllegalStateException if this module manager is not loaded
-     * @since 1.0
+     * @since 1.0.0
      */
     public E getEnvironment() {
         this.ensureLoaded();
@@ -76,7 +76,7 @@ public final class ModuleManager<E> {
      * @return the module instance, {@code null} if the module was not loaded
      * @param <M> the type of module instance to return
      * @throws IllegalStateException if this module manager is not loaded
-     * @since 1.0
+     * @since 1.0.0
      * @see AbstractModule
      */
     public <M extends Module<?>> @Nullable M getModule(Class<M> clazz) {
@@ -91,7 +91,7 @@ public final class ModuleManager<E> {
      * @return the module instance
      * @param <M> the type of module instance to return
      * @throws IllegalStateException if either this module manager or the specified module is not loaded
-     * @since 1.0
+     * @since 1.0.2
      * @see #getModule(Class)
      */
     public <M extends Module<?>> M getModuleOrThrow(Class<M> clazz) {
@@ -105,7 +105,7 @@ public final class ModuleManager<E> {
      *
      * @return the modules that are currently loaded
      * @throws IllegalStateException if this module manager is not loaded
-     * @since 1.0
+     * @since 1.0.0
      */
     public Collection<? extends Module<? super E>> getModules() {
         this.ensureLoaded();
@@ -122,7 +122,7 @@ public final class ModuleManager<E> {
      * @param clazz the class of the module to check
      * @return {@code true} if the module was loaded, {@code false} otherwise
      * @throws IllegalStateException if this module manager is not loaded
-     * @since 1.0
+     * @since 1.0.0
      * @see AbstractModule
      */
     public boolean isModuleLoaded(Class<? extends Module<?>> clazz) {
@@ -133,7 +133,7 @@ public final class ModuleManager<E> {
      * Loads all modules created by this module manager.
      *
      * @throws IllegalStateException if this module manager is unloaded
-     * @since 1.0
+     * @since 1.0.0
      */
     public void load() {
         if (this.state == State.UNLOADED)
@@ -158,7 +158,7 @@ public final class ModuleManager<E> {
      * Unloads all modules loaded by this module manager.
      *
      * @throws IllegalStateException if this module manager is not loaded
-     * @since 1.0
+     * @since 1.0.0
      */
     public void unload() {
         this.ensureLoaded();

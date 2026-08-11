@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 /**
  * A test of creating module managers containing circular module dependencies.
  *
- * @since 1.0
+ * @since 1.0.0
  * @see ModuleManager
  */
 @NullMarked

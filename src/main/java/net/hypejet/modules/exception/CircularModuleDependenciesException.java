@@ -20,7 +20,7 @@ import org.jetbrains.annotations.ApiStatus;
 /**
  * An exception thrown when the module system detects circular module dependencies.
  *
- * @since 1.0
+ * @since 1.0.0
  * @see RuntimeException
  */
 public final class CircularModuleDependenciesException extends RuntimeException {
@@ -29,7 +29,7 @@ public final class CircularModuleDependenciesException extends RuntimeException 
      *
      * <p><strong>For internal use only.</strong></p>
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     @ApiStatus.Internal
     public CircularModuleDependenciesException() {
