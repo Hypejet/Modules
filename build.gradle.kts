@@ -17,11 +17,16 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.jspecify)
-    implementation(libs.jetbrainsAnnotations)
-    implementation(libs.slf4j)
+    compileOnly(libs.jspecify)
+    compileOnly(libs.jetbrainsAnnotations)
+    compileOnly(libs.slf4j)
     testImplementation(libs.junitJupiter)
     testRuntimeOnly(libs.junitPlatformLauncher)
+}
+
+configurations {
+    // Required as we do not use any SLF4J implementation for tests but the logger api is required at runtime
+    testRuntimeOnly.get().extendsFrom(compileOnly)
 }
 
 java {
