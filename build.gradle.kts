@@ -9,7 +9,7 @@ plugins {
 val javaVersion = 25
 
 group = "net.hypejet"
-version = releaseTag() ?: "1.0.3-SNAPSHOT"
+version = releaseTag() ?: "1.0.4-SNAPSHOT"
 description = "A Java library making modular programming easier"
 
 repositories {
@@ -17,11 +17,16 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.jspecify)
-    implementation(libs.jetbrainsAnnotations)
-    implementation(libs.slf4j)
+    compileOnly(libs.jspecify)
+    compileOnly(libs.jetbrainsAnnotations)
+    compileOnly(libs.slf4j)
     testImplementation(libs.junitJupiter)
     testRuntimeOnly(libs.junitPlatformLauncher)
+}
+
+configurations {
+    // Required as we do not use any SLF4J implementation for tests but the logger api is required at runtime
+    testRuntimeOnly.get().extendsFrom(compileOnly)
 }
 
 java {
