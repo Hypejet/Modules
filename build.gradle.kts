@@ -1,7 +1,7 @@
 import java.time.Year
 
 plugins {
-    java
+    `java-library`
     alias(libs.plugins.indraLicenserSpotless)
     alias(libs.plugins.mavenPublish)
 }
@@ -9,7 +9,7 @@ plugins {
 val javaVersion = 25
 
 group = "net.hypejet"
-version = releaseTag() ?: "1.0.4-SNAPSHOT"
+version = releaseTag() ?: "1.0.5-SNAPSHOT"
 description = "A Java library making modular programming easier"
 
 repositories {
@@ -17,16 +17,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly(libs.jspecify)
-    compileOnly(libs.jetbrainsAnnotations)
-    compileOnly(libs.slf4j)
+    api(libs.slf4j)
+    compileOnlyApi(libs.jspecify)
+    compileOnlyApi(libs.jetbrainsAnnotations)
     testImplementation(libs.junitJupiter)
     testRuntimeOnly(libs.junitPlatformLauncher)
-}
-
-configurations {
-    // Required as we do not use any SLF4J implementation for tests but the logger api is required at runtime
-    testRuntimeOnly.get().extendsFrom(compileOnly)
 }
 
 java {
